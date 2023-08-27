@@ -1,0 +1,65 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: #181818;
+}
+.bulb {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background-color: #444444;
+  border-radius: 100%;
+  z-index: 200;
+  cursor: pointer;
+}
+.bulb::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 22.5px;
+  width: 35px;
+  height: 80px;
+  background-color: #444444;
+  border-radius: 10px;
+  z-index: 300;
+  border-top: 30px solid #000;
+}
+.wire {
+  width: 4px;
+  height: calc(50% - 80px);
+  position: absolute;
+  background-color: #000;
+  z-index: 100;
+  top: 0;
+  left: calc(50% - 2px);
+}
+body.on .bulb {
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 50px #fff, 0 0 100px #fff, 0 0 150px #fff, 0 0 200px #fff, 0 0 250px #fff, 0 0 300px #fff, 0 0 350px #fff;
+  z-index: 2;
+}
+body.on .bulb::before {
+  background-color: #fff;
+}
+body.on .bulb::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background-color: #fff;
+  border-radius: 50%;
+  filter: blur(40px);
+}
